@@ -20,12 +20,24 @@
 }
         header {
     background: Donas background.jpg;
-    color: white;
+    color: black;
     padding: 30px;
     border-radius: 0 0 50px 50px;
 }
         .productos { display: flex; justify-content: center; gap: 20px; padding: 20px; }
-        .donut { border: 1px solid #ddd; border-radius: 10px; padding: 15px; width: 200px; }
+        .donut {
+    background: #ffffff; /* Fondo blanco puro */
+    border: none;
+    border-radius: 30px;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Sombra que da "profundidad" */
+    transition: transform 0.3s ease;
+}
+        .donut:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
         .donut img { width: 100%; border-radius: 10px; }
         footer { background: #333; color: white; padding: 10px; margin-top: 20px; }
     </style>
@@ -38,7 +50,7 @@
     <section class="productos">
         <div class="donut">
             <img src="20260624_151654.jpg" alt="Donut glaseada">
-            <h3>Minidonas Glaseada</h3>
+            <h3>Minidonas Glaseadas</h3>
             <p>$500.00</p>
             <p>6 unidades</p>
         </div>
@@ -48,7 +60,14 @@
             <p>$250</p>
             <p>5 unidades</p>
         </div>
-    </section>
+    section {
+    background: rgba(255, 248, 225, 0.9); /* Color crema claro */
+    background-image: radial-gradient(circle, #ffb74d 2px, transparent 2px);
+    background-size: 40px 40px;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 30px;
+}
     <footer>
         <p>📍 Reparto Rajayoga | 📞 55123300 </p>
     </footer>
