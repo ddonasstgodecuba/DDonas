@@ -323,3 +323,82 @@ footer{
         align-items:center;
     }
   }
+/* =========================
+   WHATSAPP FLOAT MENU
+========================= */
+
+.wa-container{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    z-index:3000;
+}
+
+/* botón principal */
+.wa-main{
+    width:60px;
+    height:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#25D366,#128C7E);
+    color:white;
+
+    font-size:28px;
+    cursor:pointer;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+
+    animation:pulse 2s infinite;
+}
+
+/* menú oculto */
+.wa-menu{
+    position:absolute;
+    bottom:75px;
+    right:0;
+
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+
+    opacity:0;
+    transform:translateY(20px);
+    pointer-events:none;
+
+    transition:.3s ease;
+}
+
+/* activo */
+.wa-container.active .wa-menu{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+}
+
+/* botones del menú */
+.wa-menu a{
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(10px);
+
+    padding:10px 15px;
+    border-radius:15px;
+
+    text-decoration:none;
+    color:#333;
+
+    font-weight:500;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+
+    transition:.3s;
+}
+
+.wa-menu a:hover{
+    transform:translateX(-5px);
+    background:white;
+}
