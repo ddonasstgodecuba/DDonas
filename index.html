@@ -1,368 +1,312 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DDonas | Mini Donas Artesanales</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DDonas Business OS</title>
 
-  <meta name="description" content="Mini donas artesanales frescas y deliciosas. Pide fácil por WhatsApp." />
-  <meta property="og:title" content="DDonas - Mini Donas Artesanales" />
-  <meta property="og:description" content="Pequeños sabores, grandes antojos. Pedido directo por WhatsApp." />
-  <meta property="og:type" content="website" />
+<style>
+:root{
+  --accent:#ff3f86;
+  --accent2:#6c5ce7;
+  --bg:linear-gradient(180deg,#fff,#ffe6f1,#e9ddff);
+  --card:rgba(255,255,255,.75);
+  --shadow:0 20px 50px rgba(0,0,0,.10);
+}
 
-  <style>
-    :root{
-      --bg1:#fff;
-      --bg2:#ffe4ef;
-      --bg3:#e8ddff;
-      --card:#ffffff;
-      --text:#1c1c1e;
-      --muted:#6b6b73;
-      --accent:#ff4d8d;
-      --accent2:#7c5cff;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
-      --radius:18px;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+}
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
-    }
+body{
+  background:var(--bg);
+  color:#1c1c1e;
+}
 
-    html{scroll-behavior:smooth;}
+/* LOGIN */
+#login{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
 
-    body{
-      background:linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3));
-      color:var(--text);
-      overflow-x:hidden;
-    }
+input{
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  margin-top:10px;
+  width:220px;
+}
 
-    header{
-      padding:70px 20px 30px;
-      text-align:center;
-    }
+button{
+  margin-top:10px;
+  padding:10px 14px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.2s;
+}
 
-    .logo{
-      font-size:42px;
-      font-weight:800;
-      letter-spacing:-1px;
-    }
+.btn{
+  background:var(--accent);
+  color:#fff;
+}
 
-    .slogan{
-      margin-top:10px;
-      color:var(--muted);
-    }
+.btn:hover{transform:scale(1.05);}
 
-    .hero{
-      margin:25px auto;
-      max-width:420px;
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:25px;
-    }
+/* DASHBOARD */
+#app{
+  display:none;
+  padding:20px;
+}
 
-    .hero-img{
-      height:180px;
-      border-radius:14px;
-      background:linear-gradient(135deg,#ffd6e7,#d6ccff);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:40px;
-    }
+header{
+  text-align:center;
+  margin-bottom:20px;
+}
 
-    /* BOTONES IOS */
-    .btn{
-      display:inline-block;
-      margin-top:15px;
-      padding:14px 18px;
-      border-radius:14px;
-      background:var(--accent);
-      color:white;
-      text-decoration:none;
-      font-weight:600;
-      transition:all .25s ease;
-      border:none;
-      cursor:pointer;
-    }
+h1{
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  color:var(--accent);
+  font-size:54px;
+}
 
-    .btn:hover{
-      transform:translateY(-2px) scale(1.02);
-      box-shadow:0 12px 25px rgba(255,77,141,.25);
-    }
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:15px;
+}
 
-    .btn.secondary{
-      background:var(--accent2);
-    }
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr;}
+}
 
-    section{
-      padding:40px 20px;
-      max-width:1000px;
-      margin:auto;
-    }
+.card{
+  background:var(--card);
+  backdrop-filter:blur(20px);
+  border-radius:20px;
+  padding:15px;
+  box-shadow:var(--shadow);
+}
 
-    h2{margin-bottom:15px;}
+/* PRODUCT */
+.product{
+  display:flex;
+  justify-content:space-between;
+  margin:8px 0;
+  padding:8px;
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
 
-    /* TABS */
-    .tabs{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:20px;
-    }
+/* ORDER */
+.order{
+  background:#fff;
+  padding:10px;
+  border-radius:12px;
+  margin-top:10px;
+  box-shadow:var(--shadow);
+}
 
-    .tab{
-      padding:10px 14px;
-      border-radius:999px;
-      background:#fff;
-      cursor:pointer;
-      transition:.25s;
-      box-shadow:0 5px 15px rgba(0,0,0,.05);
-      user-select:none;
-    }
-
-    .tab.active{
-      background:var(--accent);
-      color:#fff;
-      transform:scale(1.05);
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      gap:15px;
-    }
-
-    .card{
-      background:var(--card);
-      border-radius:16px;
-      padding:15px;
-      box-shadow:var(--shadow);
-      transition:.25s;
-    }
-
-    .card:hover{
-      transform:translateY(-5px);
-    }
-
-    .tag{
-      font-size:11px;
-      padding:4px 8px;
-      border-radius:999px;
-      background:var(--accent2);
-      color:#fff;
-      display:inline-block;
-      margin-bottom:8px;
-    }
-
-    .price{
-      margin-top:8px;
-      font-weight:700;
-    }
-
-    .select-btn{
-      margin-top:10px;
-      width:100%;
-      padding:10px;
-      border-radius:12px;
-      border:none;
-      background:var(--accent);
-      color:#fff;
-      cursor:pointer;
-      transition:.25s;
-      font-weight:600;
-    }
-
-    .select-btn:hover{
-      transform:scale(1.03);
-    }
-
-    .selected-banner{
-      position:sticky;
-      bottom:80px;
-      margin:20px auto;
-      max-width:500px;
-      background:#fff;
-      box-shadow:var(--shadow);
-      border-radius:16px;
-      padding:15px;
-      display:none;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
-
-    .cta{
-      text-align:center;
-      background:linear-gradient(135deg,#ffe0ec,#e6ddff);
-      border-radius:20px;
-      padding:40px 20px;
-    }
-
-    footer{
-      text-align:center;
-      padding:30px 20px;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .float{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      width:56px;
-      height:56px;
-      border-radius:50%;
-      background:#25d366;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:26px;
-      color:#fff;
-      box-shadow:var(--shadow);
-      text-decoration:none;
-    }
-  </style>
+/* FLOAT */
+.float{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:#25d366;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:26px;
+  text-decoration:none;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">DDonas</div>
-  <div class="slogan">Pequeños sabores, grandes antojos</div>
-
-  <div class="hero">
-    <div class="hero-img">🍩</div>
-    <a class="btn" id="mainWA" target="_blank">Ordenar por WhatsApp</a>
-  </div>
-</header>
-
-<section>
-  <h2>Catálogo</h2>
-
-  <div class="tabs">
-    <div class="tab active" onclick="showTab('choco')">Chocolate</div>
-    <div class="tab" onclick="showTab('vainilla')">Vainilla</div>
-    <div class="tab" onclick="showTab('glaseados')">Glaseados</div>
-    <div class="tab" onclick="showTab('mixto')">Mixto</div>
-    <div class="tab" onclick="showTab('otros')">Otros</div>
-  </div>
-
-  <div id="choco" class="grid">
-    <div class="card">
-      <span class="tag">Favorito</span>
-      <h3>Choco Clásica</h3>
-      <p>Chocolate suave artesanal</p>
-      <div class="price">$1.00</div>
-      <button class="select-btn" onclick="selectDonut('Choco Clásica')">Elegir</button>
-    </div>
-
-    <div class="card">
-      <h3>Doble Cacao</h3>
-      <p>Intenso sabor chocolate</p>
-      <div class="price">$1.20</div>
-      <button class="select-btn" onclick="selectDonut('Doble Cacao')">Elegir</button>
-    </div>
-  </div>
-
-  <div id="vainilla" class="grid" style="display:none">
-    <div class="card">
-      <h3>Vainilla Soft</h3>
-      <p>Suave y aromática</p>
-      <div class="price">$1.00</div>
-      <button class="select-btn" onclick="selectDonut('Vainilla Soft')">Elegir</button>
-    </div>
-  </div>
-
-  <div id="glaseados" class="grid" style="display:none">
-    <div class="card">
-      <span class="tag">Nuevo</span>
-      <h3>Glaseado Rosa</h3>
-      <p>Dulce y brillante</p>
-      <div class="price">$1.10</div>
-      <button class="select-btn" onclick="selectDonut('Glaseado Rosa')">Elegir</button>
-    </div>
-  </div>
-
-  <div id="mixto" class="grid" style="display:none">
-    <div class="card">
-      <h3>Mix Especial</h3>
-      <p>Variedad de sabores</p>
-      <div class="price">$1.30</div>
-      <button class="select-btn" onclick="selectDonut('Mix Especial')">Elegir</button>
-    </div>
-  </div>
-
-  <div id="otros" class="grid" style="display:none">
-    <div class="card">
-      <h3>Edición Especial</h3>
-      <p>Sorpresa del día</p>
-      <div class="price">$1.50</div>
-      <button class="select-btn" onclick="selectDonut('Edición Especial')">Elegir</button>
-    </div>
-  </div>
-</section>
-
-<div class="selected-banner" id="banner">
-  <div id="selectedText">Nada seleccionado</div>
-  <a class="btn secondary" id="waBtn" target="_blank">Pedir ahora</a>
+<!-- LOGIN -->
+<div id="login">
+  <h2>🔐 Acceso Admin</h2>
+  <input type="password" id="pin" placeholder="PIN"/>
+  <button class="btn" onclick="login()">Entrar</button>
 </div>
 
-<section class="cta">
-  <h2>Pedido directo</h2>
-  <p>Confirma tu selección por WhatsApp</p>
-  <a class="btn secondary" id="ctaWA" target="_blank">Abrir chat</a>
-</section>
+<!-- APP -->
+<div id="app">
 
-<footer>
-  DDonas © 2026<br/>
-  📍 Reparto Rajayoga, Santiago de Cuba
-</footer>
+<header>
+  <h1>DDonas OS</h1>
+</header>
 
-<a class="float" id="floatWA" target="_blank">💬</a>
+<div class="grid">
+
+  <!-- PRODUCTOS -->
+  <div class="card">
+    <h3>🍩 Productos</h3>
+
+    <input id="name" placeholder="Nombre"/>
+    <input id="emoji" placeholder="Emoji"/>
+    <input id="price" placeholder="Precio"/>
+
+    <button class="btn" onclick="addProduct()">Agregar</button>
+
+    <div id="products"></div>
+  </div>
+
+  <!-- PEDIDOS -->
+  <div class="card">
+    <h3>🧾 Pedido activo</h3>
+    <div id="cart"></div>
+    <button class="btn" onclick="checkout()">Enviar WhatsApp</button>
+  </div>
+
+  <!-- HISTORIAL -->
+  <div class="card">
+    <h3>📊 Ventas</h3>
+    <div id="orders"></div>
+  </div>
+
+</div>
+
+</div>
+
+<a class="float">💬</a>
 
 <script>
-let selected = null;
-const phone = "55123300";
 
-function waLink(item){
-  const text = encodeURIComponent("Hola, quiero pedir: " + item);
-  return `https://wa.me/${phone}?text=${text}`;
+const PIN = "1234";
+
+let products = JSON.parse(localStorage.getItem("products")) || [
+  {name:"Choco Velvet", emoji:"🍫", price:1},
+  {name:"Vainilla Cloud", emoji:"🍦", price:1}
+];
+
+let cart = {};
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+/* LOGIN */
+function login(){
+  const v = document.getElementById("pin").value;
+  if(v === PIN){
+    document.getElementById("login").style.display="none";
+    document.getElementById("app").style.display="block";
+    render();
+  }else{
+    alert("PIN incorrecto");
+  }
 }
 
-function updateLinks(){
-  const baseText = selected ? selected : "minidonas";
-  const link = waLink(baseText);
-
-  document.getElementById("mainWA").href = link;
-  document.getElementById("ctaWA").href = link;
-  document.getElementById("floatWA").href = link;
-  document.getElementById("waBtn").href = link;
+/* SAVE */
+function save(){
+  localStorage.setItem("products",JSON.stringify(products));
+  localStorage.setItem("orders",JSON.stringify(orders));
 }
 
-function selectDonut(name){
-  selected = name;
-
-  document.getElementById("banner").style.display = "flex";
-  document.getElementById("selectedText").innerText = "Seleccionado: " + name;
-
-  document.getElementById("waBtn").innerText = "Pedir " + name;
-
-  updateLinks();
+/* PRODUCTS */
+function addProduct(){
+  products.push({
+    name:document.getElementById("name").value,
+    emoji:document.getElementById("emoji").value,
+    price:Number(document.getElementById("price").value)
+  });
+  save();
+  render();
 }
 
-function showTab(id){
-  document.querySelectorAll('.grid').forEach(g => g.style.display='none');
-  document.getElementById(id).style.display='grid';
-
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
+/* ADD CART */
+function add(i){
+  cart[i] = (cart[i]||0)+1;
+  render();
 }
 
-updateLinks();
+/* REMOVE */
+function remove(i){
+  delete cart[i];
+  render();
+}
+
+/* CHECKOUT */
+function checkout(){
+
+  let msg = "Pedido DDonas:\n\n";
+  let total = 0;
+
+  Object.keys(cart).forEach(i=>{
+    const p = products[i];
+    msg += `${p.emoji} ${p.name} x${cart[i]}\n`;
+    total += p.price * cart[i];
+  });
+
+  msg += `\nTotal: $${total}`;
+
+  const order = {
+    id:Date.now(),
+    text:msg,
+    total
+  };
+
+  orders.unshift(order);
+  save();
+
+  window.open(
+    "https://wa.me/55123300?text="+encodeURIComponent(msg),
+    "_blank"
+  );
+
+  cart = {};
+  render();
+}
+
+/* RENDER */
+function render(){
+
+  const p = document.getElementById("products");
+  const c = document.getElementById("cart");
+  const o = document.getElementById("orders");
+
+  p.innerHTML="";
+  c.innerHTML="";
+  o.innerHTML="";
+
+  products.forEach((x,i)=>{
+    p.innerHTML += `
+      <div class="product">
+        ${x.emoji} ${x.name}
+        <button onclick="add(${i})">+</button>
+      </div>
+    `;
+  });
+
+  Object.keys(cart).forEach(i=>{
+    const x = products[i];
+    c.innerHTML += `
+      <div class="order">
+        ${x.emoji} ${x.name} x${cart[i]}
+        <button onclick="remove(${i})">x</button>
+      </div>
+    `;
+  });
+
+  orders.slice(0,5).forEach(o=>{
+    o.innerHTML += `
+      <div class="order">
+        💰 $${o.total}
+      </div>
+    `;
+  });
+
+}
+
 </script>
 
 </body>
