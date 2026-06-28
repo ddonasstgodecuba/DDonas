@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DDonas | Mini Donas Artesanales</title>
+
+  <meta name="description" content="Mini donas artesanales frescas, suaves y deliciosas. Haz tu pedido fácil por WhatsApp." />
+  <meta property="og:title" content="DDonas - Mini Donas Artesanales" />
+  <meta property="og:description" content="Pequeños sabores, grandes antojos. Pide ahora por WhatsApp." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon placeholder -->
+  <!-- <link rel="icon" href="favicon.ico"> -->
+
+  <style>
+    :root{
+      --bg:#f7f7fb;
+      --card:#ffffff;
+      --text:#1c1c1e;
+      --muted:#6b6b73;
+      --accent:#ff6b9a;
+      --accent2:#7c5cff;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;}
+    body{
+      background:linear-gradient(180deg,#fff, var(--bg));
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    html{scroll-behavior:smooth;}
+
+    header{
+      padding:70px 20px 30px;
+      text-align:center;
+    }
+
+    .logo{
+      font-size:42px;
+      font-weight:800;
+      letter-spacing:-1px;
+    }
+
+    .slogan{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .hero-box{
+      margin:25px auto;
+      max-width:420px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:25px;
+    }
+
+    .hero-img{
+      height:180px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#ffd6e7,#d6ccff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:40px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:15px;
+      padding:14px 18px;
+      border-radius:14px;
+      background:var(--accent);
+      color:white;
+      text-decoration:none;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .btn:hover{transform:scale(1.05);}
+
+    .sub{
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    section{
+      padding:40px 20px;
+      max-width:1000px;
+      margin:auto;
+    }
+
+    h2{
+      font-size:22px;
+      margin-bottom:15px;
+    }
+
+    /* TABS */
+    .tabs{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+
+    .tab{
+      padding:10px 14px;
+      border-radius:999px;
+      background:#eee;
+      cursor:pointer;
+      font-size:14px;
+      transition:.3s;
+    }
+
+    .tab.active{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:15px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:16px;
+      padding:15px;
+      box-shadow:var(--shadow);
+      transition:.3s;
+    }
+
+    .card:hover{transform:translateY(-4px);}
+
+    .tag{
+      font-size:11px;
+      padding:4px 8px;
+      border-radius:999px;
+      background:var(--accent2);
+      color:#fff;
+      display:inline-block;
+      margin-bottom:8px;
+    }
+
+    .price{
+      margin-top:8px;
+      font-weight:700;
+    }
+
+    /* BENEFITS */
+    .benefits{
+      display:grid;
+      gap:12px;
+    }
+
+    .benefit{
+      background:var(--card);
+      padding:15px;
+      border-radius:16px;
+      box-shadow:var(--shadow);
+    }
+
+    /* CTA */
+    .cta{
+      text-align:center;
+      background:linear-gradient(135deg,#ffe0ec,#e6ddff);
+      border-radius:20px;
+      padding:40px 20px;
+    }
+
+    .cta a{
+      margin-top:15px;
+      display:inline-block;
+      background:var(--accent2);
+      color:#fff;
+      padding:14px 20px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px 20px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* FLOAT WHATSAPP */
+    .float{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      background:#25d366;
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:26px;
+      box-shadow:var(--shadow);
+      text-decoration:none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">DDonas</div>
+  <div class="slogan">“Pequeños sabores, grandes antojos.”</div>
+
+  <div class="hero-box">
+    <div class="hero-img">🍩</div>
+    <a class="btn" href="https://wa.me/55123300?text=Hola%20quiero%20hacer%20un%20pedido%20de%20minidonas" target="_blank">
+      Ordena por WhatsApp
+    </a>
+    <div class="sub">Hechas al momento • Sabor artesanal • Entrega rápida</div>
+  </div>
+</header>
+
+<section>
+  <h2>Catálogo</h2>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('choco')">Chocolate</div>
+    <div class="tab" onclick="showTab('vainilla')">Vainilla</div>
+    <div class="tab" onclick="showTab('glaseados')">Glaseados</div>
+    <div class="tab" onclick="showTab('mixto')">Mixto</div>
+    <div class="tab" onclick="showTab('otros')">Otros</div>
+  </div>
+
+  <div id="choco" class="grid">
+    <div class="card"><span class="tag">Favorito</span><h3>Choco Clásica</h3><p>Suave y cubierta de chocolate.</p><div class="price">$1.00</div></div>
+    <div class="card"><h3>Doble Cacao</h3><p>Intenso sabor a cacao.</p><div class="price">$1.20</div></div>
+  </div>
+
+  <div id="vainilla" class="grid" style="display:none">
+    <div class="card"><h3>Vainilla Soft</h3><p>Suave y aromática.</p><div class="price">$1.00</div></div>
+  </div>
+
+  <div id="glaseados" class="grid" style="display:none">
+    <div class="card"><span class="tag">Nuevo</span><h3>Glaseado Rosa</h3><p>Dulce y brillante.</p><div class="price">$1.10</div></div>
+  </div>
+
+  <div id="mixto" class="grid" style="display:none">
+    <div class="card"><h3>Mix Especial</h3><p>Variedad de sabores.</p><div class="price">$1.30</div></div>
+  </div>
+
+  <div id="otros" class="grid" style="display:none">
+    <div class="card"><h3>Edición Especial</h3><p>Sorpresa del día.</p><div class="price">$1.50</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Beneficios</h2>
+  <div class="benefits">
+    <div class="benefit">✨ Frescura garantizada</div>
+    <div class="benefit">🎁 Perfecto para regalos</div>
+    <div class="benefit">🎨 Personalización disponible</div>
+    <div class="benefit">⚡ Pedido rápido por WhatsApp</div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Haz tu pedido ahora</h2>
+  <p>Escríbenos y recibe tus minidonas frescas</p>
+  <a href="https://wa.me/55123300?text=Hola%20quiero%20hacer%20un%20pedido%20de%20minidonas" target="_blank">
+    Pedir por WhatsApp
+  </a>
+</section>
+
+<footer>
+  DDonas © 2026<br/>
+  📍 Reparto Rajayoga, Santiago de Cuba
+</footer>
+
+<a class="float" href="https://wa.me/55123300?text=Hola%20quiero%20hacer%20un%20pedido%20de%20minidonas" target="_blank">💬</a>
+
+<script>
+function showTab(id){
+  const tabs = document.querySelectorAll('.grid');
+  tabs.forEach(t => t.style.display='none');
+  document.getElementById(id).style.display='grid';
+
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
