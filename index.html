@@ -1,242 +1,436 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>DDonas | iOS Segmented Control</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DDonas | Mini Donas Premium</title>
 
-<style>
-:root{
-  --accent:#ff3f86;
-  --bg:linear-gradient(180deg,#fff,#ffe6f1,#e9ddff);
-  --card:rgba(255,255,255,.75);
-  --shadow:0 20px 50px rgba(0,0,0,.10);
-}
+  <meta name="description" content="Minidonas artesanales premium. Pedido rápido por WhatsApp." />
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
-}
+  <style>
+    :root{
+      --bg1:#fff;
+      --bg2:#ffe6f1;
+      --bg3:#e9ddff;
+      --text:#1c1c1e;
+      --muted:#6b6b73;
+      --card:rgba(255,255,255,.75);
+      --stroke:rgba(255,255,255,.4);
+      --accent:#ff3f86;
+      --accent2:#6c5ce7;
+      --shadow:0 20px 50px rgba(0,0,0,.10);
+      --radius:22px;
+    }
 
-body{
-  background:var(--bg);
-  color:#1c1c1e;
-  padding:40px 20px;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+    }
 
-/* HEADER */
-h1{
-  text-align:center;
-  font-family:"Brush Script MT","Segoe Script",cursive;
-  font-size:54px;
-  color:var(--accent);
-}
+    body{
+      background:linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3));
+      color:var(--text);
+      overflow-x:hidden;
+    }
 
-/* SEGMENTED CONTROL CONTAINER */
-.segmented{
-  position:relative;
-  display:flex;
-  max-width:520px;
-  margin:30px auto;
-  padding:6px;
-  border-radius:999px;
-  background:rgba(255,255,255,.6);
-  backdrop-filter:blur(20px);
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
+    html{scroll-behavior:smooth;}
 
-/* SLIDER ANIMADO (LA MAGIA) */
-.slider{
-  position:absolute;
-  top:6px;
-  left:6px;
-  height:calc(100% - 12px);
-  width:20%;
-  border-radius:999px;
-  background:var(--accent);
-  transition:transform .45s cubic-bezier(.2,.9,.2,1), width .45s cubic-bezier(.2,.9,.2,1);
-  box-shadow:0 10px 25px rgba(255,63,134,.25);
-}
+    /* FLOATING BACKGROUND BLUR ELEMENTS */
+    .blob{
+      position:absolute;
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:.35;
+      animation:float 8s ease-in-out infinite;
+    }
 
-/* BOTONES */
-.segment{
-  flex:1;
-  text-align:center;
-  padding:10px 8px;
-  z-index:2;
-  cursor:pointer;
-  font-size:14px;
-  user-select:none;
-  transition:.25s;
-  color:#333;
-}
+    .b1{background:#ff4d8d; top:80px; left:-80px;}
+    .b2{background:#7c5cff; bottom:100px; right:-100px;}
 
-.segment.active{
-  color:#fff;
-  font-weight:600;
-}
+    @keyframes float{
+      0%,100%{transform:translateY(0px)}
+      50%{transform:translateY(-25px)}
+    }
 
-/* GRID */
-.grid{
-  max-width:900px;
-  margin:30px auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-  animation:fade .35s ease;
-}
+    header{
+      text-align:center;
+      padding:80px 20px 30px;
+      position:relative;
+    }
 
-@keyframes fade{
-  from{opacity:0; transform:translateY(10px)}
-  to{opacity:1; transform:translateY(0)}
-}
+    .logo{
+      font-size:46px;
+      font-weight:800;
+      letter-spacing:-1px;
+    }
 
-.card{
-  background:var(--card);
-  border-radius:20px;
-  padding:15px;
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(20px);
-}
+    .slogan{
+      color:var(--muted);
+      margin-top:10px;
+      font-size:15px;
+    }
 
-.img{
-  height:140px;
-  border-radius:16px;
-  background:linear-gradient(135deg,#ffe0ec,#e6ddff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:40px;
-}
+    /* HERO */
+    .hero{
+      margin:25px auto;
+      max-width:460px;
+      background:var(--card);
+      backdrop-filter:blur(18px);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:20px;
+      transform:translateY(0);
+      transition:.4s;
+    }
 
-button{
-  margin-top:10px;
-  width:100%;
-  padding:10px;
-  border:none;
-  border-radius:14px;
-  background:var(--accent);
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-  transition:.25s;
-}
+    .hero:hover{
+      transform:translateY(-5px);
+    }
 
-button:hover{
-  transform:scale(1.03);
-}
+    .hero-img{
+      height:200px;
+      border-radius:18px;
+      background:radial-gradient(circle at top,#ffd6e7,#d6ccff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:60px;
+      animation:float 6s ease-in-out infinite;
+    }
 
-/* FLOAT */
-.float{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  background:#25d366;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:26px;
-  box-shadow:var(--shadow);
-  text-decoration:none;
-}
-</style>
+    /* BUTTONS */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      margin-top:14px;
+      padding:14px 18px;
+      border-radius:16px;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      transition:.25s ease;
+      box-shadow:0 10px 25px rgba(255,63,134,.25);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px) scale(1.02);
+    }
+
+    .btn.secondary{
+      background:var(--accent2);
+      box-shadow:0 10px 25px rgba(108,92,231,.25);
+    }
+
+    /* SECTION */
+    section{
+      padding:50px 20px;
+      max-width:1100px;
+      margin:auto;
+    }
+
+    h2{
+      font-size:22px;
+      margin-bottom:18px;
+    }
+
+    /* TABS */
+    .tabs{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:25px;
+    }
+
+    .tab{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.7);
+      border:1px solid rgba(255,255,255,.6);
+      cursor:pointer;
+      transition:.25s;
+      backdrop-filter:blur(10px);
+      font-size:14px;
+    }
+
+    .tab.active{
+      background:var(--accent);
+      color:#fff;
+      transform:scale(1.05);
+    }
+
+    /* GRID */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+
+    /* CARD */
+    .card{
+      background:var(--card);
+      border:1px solid var(--stroke);
+      backdrop-filter:blur(20px);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:.35s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+    }
+
+    .img{
+      height:140px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:40px;
+      background:linear-gradient(135deg,#ffe0ec,#e6ddff);
+    }
+
+    .content{
+      padding:14px;
+    }
+
+    .tag{
+      display:inline-block;
+      font-size:11px;
+      padding:4px 8px;
+      border-radius:999px;
+      background:var(--accent2);
+      color:#fff;
+      margin-bottom:6px;
+    }
+
+    .price{
+      margin-top:8px;
+      font-weight:700;
+    }
+
+    /* SVG ICON */
+    .icon{
+      width:18px;
+      height:18px;
+      fill:none;
+      stroke:white;
+      stroke-width:2;
+    }
+
+    .select{
+      margin-top:10px;
+      width:100%;
+      padding:10px;
+      border:none;
+      border-radius:14px;
+      background:var(--accent);
+      color:#fff;
+      cursor:pointer;
+      transition:.25s;
+    }
+
+    .select:hover{
+      transform:scale(1.03);
+    }
+
+    /* FLOAT WA */
+    .float{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      background:#25d366;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:var(--shadow);
+      text-decoration:none;
+      font-size:26px;
+      animation:pulse 2.5s infinite;
+    }
+
+    @keyframes pulse{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.1)}
+    }
+
+    /* CTA */
+    .cta{
+      text-align:center;
+      padding:60px 20px;
+      border-radius:24px;
+      background:linear-gradient(135deg,#ffe0ec,#e6ddff);
+      box-shadow:var(--shadow);
+    }
+
+    footer{
+      text-align:center;
+      padding:30px 20px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .fade{
+      animation:fadeIn .6s ease;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(10px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>DDonas</h1>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
 
-<!-- SEGMENTED CONTROL -->
-<div class="segmented" id="segmented">
+<header>
+  <div class="logo">DDonas</div>
+  <div class="slogan">Pequeños sabores, grandes antojos</div>
 
-  <div class="slider" id="slider"></div>
+  <div class="hero fade">
+    <div class="hero-img">🍩✨</div>
 
-  <div class="segment active" onclick="setTab(0)">Chocolate</div>
-  <div class="segment" onclick="setTab(1)">Vainilla</div>
-  <div class="segment" onclick="setTab(2)">Glaseado</div>
-  <div class="segment" onclick="setTab(3)">Mixto</div>
-  <div class="segment" onclick="setTab(4)">Otros</div>
+    <a class="btn" id="mainWA">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M20 11.5a8.5 8.5 0 1 1-4-7.2"/>
+        <path d="M20 4v7h-7"/>
+      </svg>
+      Pedir por WhatsApp
+    </a>
+  </div>
+</header>
 
-</div>
+<section>
+  <h2>Catálogo premium</h2>
 
-<!-- CONTENT -->
-<div id="content">
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('choco')">Chocolate</div>
+    <div class="tab" onclick="showTab('vainilla')">Vainilla</div>
+    <div class="tab" onclick="showTab('glaseados')">Glaseados</div>
+    <div class="tab" onclick="showTab('mixto')">Mixto</div>
+    <div class="tab" onclick="showTab('otros')">Otros</div>
+  </div>
 
-  <div class="grid" id="tab0">
+  <div id="choco" class="grid fade">
     <div class="card">
       <div class="img">🍫</div>
-      <h3>Choco Velvet</h3>
-      <button>Elegir</button>
+      <div class="content">
+        <span class="tag">Más pedido</span>
+        <h3>Choco Velvet</h3>
+        <p>Chocolate suave premium</p>
+        <div class="price">$1.00</div>
+        <button class="select" onclick="select('Choco Velvet')">Elegir</button>
+      </div>
     </div>
   </div>
 
-  <div class="grid" id="tab1" style="display:none">
+  <div id="vainilla" class="grid" style="display:none">
     <div class="card">
       <div class="img">🍦</div>
-      <h3>Vainilla Cloud</h3>
-      <button>Elegir</button>
+      <div class="content">
+        <h3>Vainilla Cloud</h3>
+        <p>Suave y cremosa</p>
+        <div class="price">$1.00</div>
+        <button class="select" onclick="select('Vainilla Cloud')">Elegir</button>
+      </div>
     </div>
   </div>
 
-  <div class="grid" id="tab2" style="display:none">
+  <div id="glaseados" class="grid" style="display:none">
     <div class="card">
       <div class="img">🍓</div>
-      <h3>Glaseado Pink</h3>
-      <button>Elegir</button>
+      <div class="content">
+        <span class="tag">Nuevo</span>
+        <h3>Glaseado Pink</h3>
+        <p>Dulce brillante</p>
+        <div class="price">$1.10</div>
+        <button class="select" onclick="select('Glaseado Pink')">Elegir</button>
+      </div>
     </div>
   </div>
 
-  <div class="grid" id="tab3" style="display:none">
+  <div id="mixto" class="grid" style="display:none">
     <div class="card">
       <div class="img">🍩</div>
-      <h3>Mix Deluxe</h3>
-      <button>Elegir</button>
+      <div class="content">
+        <h3>Mix Deluxe</h3>
+        <p>Variedad premium</p>
+        <div class="price">$1.30</div>
+        <button class="select" onclick="select('Mix Deluxe')">Elegir</button>
+      </div>
     </div>
   </div>
 
-  <div class="grid" id="tab4" style="display:none">
+  <div id="otros" class="grid" style="display:none">
     <div class="card">
       <div class="img">✨</div>
-      <h3>Edición Chef</h3>
-      <button>Elegir</button>
+      <div class="content">
+        <h3>Edición Chef</h3>
+        <p>Sorpresa artesanal</p>
+        <div class="price">$1.50</div>
+        <button class="select" onclick="select('Edición Chef')">Elegir</button>
+      </div>
     </div>
   </div>
+</section>
 
-</div>
+<section class="cta fade">
+  <h2>Ordena experiencia premium</h2>
+  <p>Un clic y tu pedido entra directo</p>
+  <a class="btn secondary" id="ctaWA">Abrir WhatsApp</a>
+</section>
 
-<a class="float">💬</a>
+<footer>
+  DDonas © 2026<br/>
+  📍 Reparto Rajayoga, Santiago de Cuba
+</footer>
+
+<a class="float" id="floatWA">💬</a>
 
 <script>
+let selected = null;
+const phone = "55123300";
 
-const slider = document.getElementById("slider");
-const segments = document.querySelectorAll(".segment");
-
-function setTab(i){
-
-  // tabs content
-  for(let j=0;j<5;j++){
-    document.getElementById("tab"+j).style.display = (j===i) ? "grid" : "none";
-  }
-
-  // active state text
-  segments.forEach(s => s.classList.remove("active"));
-  segments[i].classList.add("active");
-
-  // 🔥 ANIMACIÓN REAL TIPO iOS (SLIDER FLUIDO)
-  const width = 100 / segments.length;
-
-  slider.style.width = width + "%";
-  slider.style.transform = `translateX(${i * 100}%)`;
-
+function link(text){
+  return `https://wa.me/${phone}?text=${encodeURIComponent("Quiero pedir: " + text)}`;
 }
 
+function update(){
+  const t = selected || "minidonas";
+  const url = link(t);
+
+  document.getElementById("mainWA").href = url;
+  document.getElementById("ctaWA").href = url;
+  document.getElementById("floatWA").href = url;
+}
+
+function select(name){
+  selected = name;
+  update();
+}
+
+function showTab(id){
+  document.querySelectorAll('.grid').forEach(g => g.style.display='none');
+  document.getElementById(id).style.display='grid';
+
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+update();
 </script>
 
 </body>
