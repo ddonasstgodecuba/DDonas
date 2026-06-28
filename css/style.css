@@ -1,0 +1,325 @@
+/* =========================
+   BASE
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+:root{
+
+    --rosa:#FFD6E8;
+    --rosa2:#F8BBD9;
+
+    --chocolate:#B68A72;
+
+    --azul:#CDE7FF;
+
+    --violeta:#DCCBFF;
+
+    --blanco:#ffffff;
+
+    --texto:#3d2c35;
+}
+
+/* =========================
+   FONDO GENERAL
+========================= */
+
+body{
+    min-height:100vh;
+    color:var(--texto);
+
+    background: linear-gradient(135deg,
+        var(--rosa),
+        var(--blanco),
+        var(--azul),
+        var(--violeta)
+    );
+
+    background-size:400% 400%;
+    animation:fondo 18s ease infinite;
+}
+
+@keyframes fondo{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* =========================
+   NAVBAR GLASS
+========================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.25);
+
+    border-bottom:1px solid rgba(255,255,255,0.4);
+    z-index:1000;
+}
+
+.navbar .logo{
+    font-weight:700;
+    font-size:20px;
+}
+
+.navbar ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:var(--texto);
+    font-weight:500;
+    transition:.3s;
+}
+
+.navbar a:hover{
+    color:var(--chocolate);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px;
+}
+
+.hero-content{
+    max-width:700px;
+    padding:40px;
+
+    background:rgba(255,255,255,0.25);
+    backdrop-filter: blur(20px);
+
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,0.4);
+
+    animation:fadeIn 1s ease;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    border-radius:50px;
+
+    background: linear-gradient(90deg, var(--rosa2), var(--violeta));
+    color:white;
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    padding:80px 40px;
+    text-align:center;
+}
+
+.features{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.feature{
+    width:250px;
+    padding:25px;
+
+    background:rgba(255,255,255,0.3);
+    backdrop-filter: blur(15px);
+
+    border-radius:25px;
+}
+
+/* =========================
+   CATÁLOGO + TABS
+========================= */
+
+.catalogo{
+    padding:80px 40px;
+    text-align:center;
+}
+
+.tabs{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:30px 0;
+}
+
+.tab{
+    padding:12px 20px;
+    border:none;
+    cursor:pointer;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px);
+
+    transition:.3s;
+    font-weight:500;
+}
+
+.tab:hover{
+    transform:translateY(-3px);
+}
+
+.tab.active{
+    background:var(--rosa);
+}
+
+/* =========================
+   CONTENIDO TABS
+========================= */
+
+.tab-content .content{
+    display:none;
+    animation:fadeIn .5s ease;
+}
+
+.tab-content .content.active{
+    display:block;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    width:220px;
+    background:rgba(255,255,255,0.4);
+    backdrop-filter: blur(15px);
+
+    border-radius:25px;
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+}
+
+.card h3{
+    margin:10px 0;
+}
+
+.card span{
+    display:block;
+    margin:10px;
+    font-weight:700;
+    color:var(--chocolate);
+}
+
+/* =========================
+   CONTACTO
+========================= */
+
+.contacto{
+    text-align:center;
+    padding:80px 40px;
+}
+
+.whatsapp{
+    margin-top:20px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,0.2);
+    color:white;
+}
+
+/* =========================
+   ANIMACIÓN
+========================= */
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .navbar{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .cards{
+        flex-direction:column;
+        align-items:center;
+    }
+  }
