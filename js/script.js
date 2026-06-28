@@ -67,3 +67,9 @@ window.addEventListener("load", () => {
     document.body.style.opacity = "1";
 
 });
+const waContainer = document.querySelector(".wa-container");
+const waMain = document.getElementById("waMain");
+
+waMain.addEventListener("click", () => {
+    waContainer.classList.toggle("active");
+});
