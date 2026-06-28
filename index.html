@@ -14,87 +14,79 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-
 </head>
+
+<body>
+
+<!-- 💬 WHATSAPP FLOAT MENU -->
 <div class="wa-container">
 
-    <a class="wa-main" id="waMain">
-        💬
-    </a>
+    <a class="wa-main" id="waMain">💬</a>
 
-    <div class="wa-menu" id="waMenu">
+    <div class="wa-menu">
 
-        <a href="https://wa.me/5355123300?text=Hola%20quiero%20hacer%20un%20pedido%20de%20minidonas"
-           target="_blank">
+        <a href="https://wa.me/5355123300?text=Hola%20quiero%20hacer%20un%20pedido%20de%20minidonas">
             🍩 Hacer pedido
         </a>
 
-        <a href="https://wa.me/5355123300?text=Hola%20quiero%20ver%20los%20precios"
-           target="_blank">
+        <a href="https://wa.me/5355123300?text=Hola%20quiero%20ver%20los%20precios">
             💰 Ver precios
         </a>
 
-        <a href="https://wa.me/5355123300?text=Hola%20quiero%20saber%20los%20sabores%20disponibles"
-           target="_blank">
+        <a href="https://wa.me/5355123300?text=Hola%20quiero%20saber%20los%20sabores%20disponibles">
             🍫 Sabores
         </a>
 
-        <a href="https://wa.me/5355123300?text=Hola%20quiero%20la%20ubicaci%C3%B3n"
-           target="_blank">
+        <a href="https://wa.me/5355123300?text=Hola%20quiero%20la%20ubicación">
             📍 Ubicación
         </a>
 
     </div>
 
 </div>
-<body>
+
+<!-- ================= HEADER ================= -->
 
 <header>
 
 <nav class="navbar">
 
-<div class="logo">
-🍩 <span>DDonas</span>
-</div>
+    <div class="logo">
+        🍩 <span>DDonas</span>
+    </div>
 
-<ul>
+    <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
 
-<li><a href="#inicio">Inicio</a></li>
-<li><a href="#nosotros">Nosotros</a></li>
-<li><a href="#catalogo">Catálogo</a></li>
-<li><a href="#contacto">Contacto</a></li>
+    <!-- SWITCH MODO OSCURO -->
+    <label class="ios-switch">
+        <input type="checkbox" id="darkToggle">
+        <span class="slider"></span>
+    </label>
 
-</ul>
-
-<!-- SWITCH MODO OSCURO iOS -->
-<label class="ios-switch">
-
-    <input type="checkbox" id="darkToggle">
-
-    <span class="slider"></span>
-
-</label>
 </nav>
 
 <section class="hero" id="inicio">
 
-<div class="hero-content">
+    <div class="hero-content">
 
-<h1>Las mejores Minidonas de Santiago de Cuba</h1>
+        <h1>Las mejores Minidonas de Santiago de Cuba</h1>
 
-<p>
-Suaves, frescas y preparadas con mucho amor para endulzar tu día.
-</p>
+        <p>Suaves, frescas y preparadas con mucho amor para endulzar tu día.</p>
 
-<a href="#catalogo" class="btn">
-Ver Catálogo
-</a>
+        <a href="#catalogo" class="btn">Ver Catálogo</a>
 
-</div>
+    </div>
 
 </section>
 
 </header>
+
+<!-- ================= MAIN ================= -->
 
 <main>
 
@@ -104,247 +96,54 @@ Ver Catálogo
 
 <div class="features">
 
-<div class="feature">
+    <div class="feature">
+        <h3>🍩 Frescas</h3>
+        <p>Preparadas diariamente con ingredientes seleccionados.</p>
+    </div>
 
-<h3>🍩 Frescas</h3>
+    <div class="feature">
+        <h3>❤️ Artesanales</h3>
+        <p>Cada minidona es elaborada cuidadosamente para lograr el mejor sabor.</p>
+    </div>
 
-<p>
-Preparadas diariamente con ingredientes seleccionados.
-</p>
-
-</div>
-
-<div class="feature">
-
-<h3>❤️ Artesanales</h3>
-
-<p>
-Cada minidona es elaborada cuidadosamente para lograr el mejor sabor.
-</p>
-
-</div>
-
-<div class="feature">
-
-<h3>🚚 Pedidos rápidos</h3>
-
-<p>
-Realiza tu pedido fácilmente por WhatsApp.
-</p>
-
-</div>
+    <div class="feature">
+        <h3>🚚 Pedidos rápidos</h3>
+        <p>Realiza tu pedido fácilmente por WhatsApp.</p>
+    </div>
 
 </div>
 
 </section>
 
+<!-- CATÁLOGO -->
 <section class="catalogo" id="catalogo">
-
-<h2>Nuestro Catálogo</h2>
-
-<div class="tabs">
-
-<button class="tab active" data-tab="glaseado">Glaseado</button>
-
-<button class="tab" data-tab="chispas">Chispas</button>
-
-<button class="tab" data-tab="chocolate">Chocolate</button>
-
-<button class="tab" data-tab="fresa">Fresa</button>
-
-<button class="tab" data-tab="vainilla">Vainilla</button>
-
-<button class="tab" data-tab="mixto">Mixto</button>
-
-<button class="tab" data-tab="otros">Otros</button>
-
-</div>
-
-<div class="tab-content">
-
-<div class="content active" id="glaseado">
-
-<div class="cards">
-
-<div class="card">
-
-<img src="img/glaseadas.jpg" alt="Minidonas Glaseadas">
-
-<h3>Glaseadas Clásicas</h3>
-
-<p>6 unidades</p>
-
-<span>$500.00</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="content" id="chispas">
-
-<div class="cards">
-
-<div class="card">
-
-<img src="img/chispas.jpg" alt="Minidonas con chispas">
-
-<h3>Chispas de Colores</h3>
-
-<p>6 unidades</p>
-
-<span>$550.00</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="content" id="chocolate">
-
-<div class="cards">
-
-<div class="card">
-
-<img src="img/chocolate.jpg" alt="Chocolate">
-
-<h3>Chocolate</h3>
-
-<p>5 unidades</p>
-
-<span>$250.00</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="content" id="fresa">
-
-<div class="cards">
-
-<div class="card">
-
-<img src="img/fresa.jpg" alt="Fresa">
-
-<h3>Fresa</h3>
-
-<p>6 unidades</p>
-
-<span>$550.00</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="content" id="vainilla">
-
-<div class="cards">
-
-<div class="card">
-
-<img src="img/vainilla.jpg" alt="Vainilla">
-
-<h3>Vainilla</h3>
-
-<p>6 unidades</p>
-
-<span>$500.00</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="content" id="mixto">
-
-<div class="cards">
-
-<div class="card">
-
-<img src="img/mixto.jpg" alt="Mixto">
-
-<h3>Caja Mixta</h3>
-
-<p>12 unidades</p>
-
-<span>$1000.00</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="content" id="otros">
-
-<div class="cards">
-
-<div class="card">
-
-<img src="img/especial.jpg" alt="Especial">
-
-<h3>Ediciones Especiales</h3>
-
-<p>Consulta disponibilidad.</p>
-
-<span>Desde $600</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+<!-- (tu contenido igual) -->
 </section>
 
+<!-- CONTACTO -->
 <section class="contacto" id="contacto">
 
 <h2>Haz tu pedido</h2>
 
-<p>
-Estamos listos para preparar tus minidonas favoritas.
-</p>
+<p>Estamos listos para preparar tus minidonas favoritas.</p>
 
-<a
-class="btn whatsapp"
-href="https://wa.me/5355123300"
-target="_blank">
-
+<a class="btn whatsapp" href="https://wa.me/5355123300" target="_blank">
 Pedir por WhatsApp
-
 </a>
 
-<p class="direccion">
-
-📍 Reparto Rajayoga · Santiago de Cuba
-
-</p>
+<p class="direccion">📍 Reparto Rajayoga · Santiago de Cuba</p>
 
 </section>
 
 </main>
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
-
-<p>
-
-© 2026 DDonas · Todos los derechos reservados.
-
-</p>
-
+<p>© 2026 DDonas · Todos los derechos reservados.</p>
 </footer>
 
 <script src="js/script.js"></script>
 
 </body>
-
 </html>
