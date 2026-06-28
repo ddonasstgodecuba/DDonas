@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>DDonas Business OS</title>
+<title>DDonas Pro</title>
 
 <style>
 :root{
   --accent:#ff3f86;
-  --accent2:#6c5ce7;
   --bg:linear-gradient(180deg,#fff,#ffe6f1,#e9ddff);
   --card:rgba(255,255,255,.75);
   --shadow:0 20px 50px rgba(0,0,0,.10);
@@ -18,7 +17,7 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
 }
 
 body{
@@ -26,48 +25,10 @@ body{
   color:#1c1c1e;
 }
 
-/* LOGIN */
-#login{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-}
-
-input{
-  padding:12px;
-  border-radius:12px;
-  border:1px solid #ddd;
-  margin-top:10px;
-  width:220px;
-}
-
-button{
-  margin-top:10px;
-  padding:10px 14px;
-  border:none;
-  border-radius:12px;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.btn{
-  background:var(--accent);
-  color:#fff;
-}
-
-.btn:hover{transform:scale(1.05);}
-
-/* DASHBOARD */
-#app{
-  display:none;
-  padding:20px;
-}
-
+/* HEADER */
 header{
   text-align:center;
-  margin-bottom:20px;
+  padding:30px;
 }
 
 h1{
@@ -76,15 +37,74 @@ h1{
   font-size:54px;
 }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:15px;
+/* ADMIN BUTTON */
+#adminBtn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(10px);
+  box-shadow:var(--shadow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-size:18px;
+  z-index:10;
+  transition:.2s;
 }
 
-@media(max-width:900px){
-  .grid{grid-template-columns:1fr;}
+#adminBtn:hover{
+  transform:scale(1.1);
+}
+
+/* MODAL */
+#modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+}
+
+.modal-box{
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  width:260px;
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  margin-top:10px;
+}
+
+button{
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:12px;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+
+/* ADMIN PANEL */
+#adminPanel{
+  display:none;
+  max-width:900px;
+  margin:20px auto;
+  padding:20px;
 }
 
 .card{
@@ -93,27 +113,24 @@ h1{
   border-radius:20px;
   padding:15px;
   box-shadow:var(--shadow);
+  margin-bottom:15px;
 }
 
-/* PRODUCT */
-.product{
-  display:flex;
-  justify-content:space-between;
-  margin:8px 0;
-  padding:8px;
-  border-bottom:1px solid rgba(0,0,0,.05);
+/* SHOP */
+.shop{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
 }
 
-/* ORDER */
-.order{
+.item{
   background:#fff;
-  padding:10px;
-  border-radius:12px;
-  margin-top:10px;
+  padding:12px;
+  border-radius:14px;
+  margin-bottom:10px;
   box-shadow:var(--shadow);
 }
 
-/* FLOAT */
 .float{
   position:fixed;
   right:18px;
@@ -128,55 +145,52 @@ h1{
   color:#fff;
   font-size:26px;
   text-decoration:none;
+  box-shadow:var(--shadow);
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<div id="login">
-  <h2>🔐 Acceso Admin</h2>
-  <input type="password" id="pin" placeholder="PIN"/>
-  <button class="btn" onclick="login()">Entrar</button>
+<!-- BOTÓN ADMIN ESQUINA -->
+<div id="adminBtn" onclick="openModal()">⚙️</div>
+
+<!-- MODAL PIN -->
+<div id="modal">
+  <div class="modal-box">
+    <h3>Acceso Admin</h3>
+    <input id="pin" type="password" placeholder="PIN"/>
+    <button onclick="login()">Entrar</button>
+    <button onclick="closeModal()" style="background:#ccc;color:#000">Cerrar</button>
+  </div>
 </div>
 
-<!-- APP -->
-<div id="app">
-
 <header>
-  <h1>DDonas OS</h1>
+  <h1>DDonas</h1>
 </header>
 
-<div class="grid">
+<!-- TIENDA CLIENTE -->
+<div class="shop">
+  <div id="products"></div>
+</div>
 
-  <!-- PRODUCTOS -->
+<!-- ADMIN PANEL OCULTO -->
+<div id="adminPanel">
+
   <div class="card">
-    <h3>🍩 Productos</h3>
+    <h3>Panel Admin</h3>
 
     <input id="name" placeholder="Nombre"/>
     <input id="emoji" placeholder="Emoji"/>
     <input id="price" placeholder="Precio"/>
 
-    <button class="btn" onclick="addProduct()">Agregar</button>
-
-    <div id="products"></div>
+    <button onclick="add()">Agregar producto</button>
   </div>
 
-  <!-- PEDIDOS -->
   <div class="card">
-    <h3>🧾 Pedido activo</h3>
-    <div id="cart"></div>
-    <button class="btn" onclick="checkout()">Enviar WhatsApp</button>
+    <h3>Productos</h3>
+    <div id="list"></div>
   </div>
-
-  <!-- HISTORIAL -->
-  <div class="card">
-    <h3>📊 Ventas</h3>
-    <div id="orders"></div>
-  </div>
-
-</div>
 
 </div>
 
@@ -187,125 +201,96 @@ h1{
 const PIN = "1234";
 
 let products = JSON.parse(localStorage.getItem("products")) || [
-  {name:"Choco Velvet", emoji:"🍫", price:1},
-  {name:"Vainilla Cloud", emoji:"🍦", price:1}
+  {name:"Choco Velvet",emoji:"🍫",price:1},
+  {name:"Vainilla Cloud",emoji:"🍦",price:1}
 ];
 
 let cart = {};
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+/* MODAL */
+function openModal(){
+  document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
 
 /* LOGIN */
 function login(){
   const v = document.getElementById("pin").value;
+
   if(v === PIN){
-    document.getElementById("login").style.display="none";
-    document.getElementById("app").style.display="block";
+    document.getElementById("adminPanel").style.display="block";
+    closeModal();
     render();
   }else{
     alert("PIN incorrecto");
   }
 }
 
-/* SAVE */
-function save(){
-  localStorage.setItem("products",JSON.stringify(products));
-  localStorage.setItem("orders",JSON.stringify(orders));
-}
-
-/* PRODUCTS */
-function addProduct(){
+/* ADMIN */
+function add(){
   products.push({
     name:document.getElementById("name").value,
     emoji:document.getElementById("emoji").value,
     price:Number(document.getElementById("price").value)
   });
+
   save();
   render();
 }
 
-/* ADD CART */
-function add(i){
-  cart[i] = (cart[i]||0)+1;
+function del(i){
+  products.splice(i,1);
+  save();
   render();
 }
 
-/* REMOVE */
-function remove(i){
-  delete cart[i];
-  render();
+/* SAVE */
+function save(){
+  localStorage.setItem("products",JSON.stringify(products));
 }
 
-/* CHECKOUT */
-function checkout(){
+/* SHOP */
+function render(){
 
-  let msg = "Pedido DDonas:\n\n";
-  let total = 0;
+  const p = document.getElementById("products");
+  const l = document.getElementById("list");
 
-  Object.keys(cart).forEach(i=>{
-    const p = products[i];
-    msg += `${p.emoji} ${p.name} x${cart[i]}\n`;
-    total += p.price * cart[i];
+  p.innerHTML="";
+  l.innerHTML="";
+
+  products.forEach((x,i)=>{
+
+    p.innerHTML += `
+      <div class="item">
+        ${x.emoji} ${x.name} - $${x.price}
+        <button onclick="addCart(${i})">+</button>
+      </div>
+    `;
+
+    l.innerHTML += `
+      <div class="item">
+        ${x.emoji} ${x.name}
+        <button onclick="del(${i})">x</button>
+      </div>
+    `;
   });
 
-  msg += `\nTotal: $${total}`;
+}
 
-  const order = {
-    id:Date.now(),
-    text:msg,
-    total
-  };
-
-  orders.unshift(order);
-  save();
+/* CART SIMPLE */
+function addCart(i){
+  let msg = "Quiero: " + products[i].emoji + " " + products[i].name;
 
   window.open(
     "https://wa.me/55123300?text="+encodeURIComponent(msg),
     "_blank"
   );
-
-  cart = {};
-  render();
 }
 
-/* RENDER */
-function render(){
-
-  const p = document.getElementById("products");
-  const c = document.getElementById("cart");
-  const o = document.getElementById("orders");
-
-  p.innerHTML="";
-  c.innerHTML="";
-  o.innerHTML="";
-
-  products.forEach((x,i)=>{
-    p.innerHTML += `
-      <div class="product">
-        ${x.emoji} ${x.name}
-        <button onclick="add(${i})">+</button>
-      </div>
-    `;
-  });
-
-  Object.keys(cart).forEach(i=>{
-    const x = products[i];
-    c.innerHTML += `
-      <div class="order">
-        ${x.emoji} ${x.name} x${cart[i]}
-        <button onclick="remove(${i})">x</button>
-      </div>
-    `;
-  });
-
-  orders.slice(0,5).forEach(o=>{
-    o.innerHTML += `
-      <div class="order">
-        💰 $${o.total}
-      </div>
-    `;
-  });
-
-}
+render();
 
 </script>
 
