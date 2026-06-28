@@ -1,75 +1,312 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DDonas- Las más mejores minidonas de Santiago de Cuba</title>
-    <style>
-        body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    animation: fondoAnimado 10s ease infinite alternate;
-}
 
-@keyframes fondoAnimado {
-    0% { background: #ffe6f0; }   /* Rosa clarito */
-    50% { background: #fff3cd; }  /* Crema */
-    100% { background: #d4edda; } /* Verde menta */
-}
-        header {
-    background: Donas background.jpg;
-    color: black;
-    padding: 30px;
-    border-radius: 0 0 50px 50px;
-}
-        .productos { display: flex; justify-content: center; gap: 20px; padding: 20px; }
-        .donut {
-    background: #ffffff; /* Fondo blanco puro */
-    border: none;
-    border-radius: 30px;
-    padding: 20px;
-    width: 200px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease;
-}
-        .donut:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-}
-        .donut img { width: 100%; border-radius: 10px; }
-        footer { background: #333; color: white; padding: 10px; margin-top: 20px; }
-    </style>
+    <title>DDonas | Las mejores minidonas de Santiago de Cuba</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
 </head>
+
 <body>
-    <header>
-        <h1>🍩 DDonas 🍩</h1>
-        <p>Las mejores minidonas de Santiago de Cuba 🤤</p>
-    </header>
-    <section class="productos">
-        <div class="donut">
-            <img src="20260624_151654.jpg" alt="Donut glaseada">
-            <h3>Minidonas Glaseadas</h3>
-            <p>$500.00</p>
-            <p>6 unidades</p>
-        </div>
-        <div class="donut">
-            <img src="20260624_151743.jpg" alt="Donut de chocolate">
-            <h3>Minidonas de Chocolate</h3>
-            <p>$250</p>
-            <p>5 unidades</p>
-        </div>
-    section {
-    background: rgba(255, 248, 225, 0.9); /* Color crema claro */
-    background-image: radial-gradient(circle, #ffb74d 2px, transparent 2px);
-    background-size: 40px 40px;
-    padding: 30px;
-    margin: 30px;
-    border-radius: 30px;
-}
-    <footer>
-        <p>📍 Reparto Rajayoga | 📞 55123300 </p>
-    </footer>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+🍩 <span>DDonas</span>
+</div>
+
+<ul>
+
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#nosotros">Nosotros</a></li>
+<li><a href="#catalogo">Catálogo</a></li>
+<li><a href="#contacto">Contacto</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero" id="inicio">
+
+<div class="hero-content">
+
+<h1>Las mejores Minidonas de Santiago de Cuba</h1>
+
+<p>
+Suaves, frescas y preparadas con mucho amor para endulzar tu día.
+</p>
+
+<a href="#catalogo" class="btn">
+Ver Catálogo
+</a>
+
+</div>
+
+</section>
+
+</header>
+
+<main>
+
+<section class="about" id="nosotros">
+
+<h2>¿Por qué elegir DDonas?</h2>
+
+<div class="features">
+
+<div class="feature">
+
+<h3>🍩 Frescas</h3>
+
+<p>
+Preparadas diariamente con ingredientes seleccionados.
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>❤️ Artesanales</h3>
+
+<p>
+Cada minidona es elaborada cuidadosamente para lograr el mejor sabor.
+</p>
+
+</div>
+
+<div class="feature">
+
+<h3>🚚 Pedidos rápidos</h3>
+
+<p>
+Realiza tu pedido fácilmente por WhatsApp.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="catalogo" id="catalogo">
+
+<h2>Nuestro Catálogo</h2>
+
+<div class="tabs">
+
+<button class="tab active" data-tab="glaseado">Glaseado</button>
+
+<button class="tab" data-tab="chispas">Chispas</button>
+
+<button class="tab" data-tab="chocolate">Chocolate</button>
+
+<button class="tab" data-tab="fresa">Fresa</button>
+
+<button class="tab" data-tab="vainilla">Vainilla</button>
+
+<button class="tab" data-tab="mixto">Mixto</button>
+
+<button class="tab" data-tab="otros">Otros</button>
+
+</div>
+
+<div class="tab-content">
+
+<div class="content active" id="glaseado">
+
+<div class="cards">
+
+<div class="card">
+
+<img src="img/glaseadas.jpg" alt="Minidonas Glaseadas">
+
+<h3>Glaseadas Clásicas</h3>
+
+<p>6 unidades</p>
+
+<span>$500.00</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="content" id="chispas">
+
+<div class="cards">
+
+<div class="card">
+
+<img src="img/chispas.jpg" alt="Minidonas con chispas">
+
+<h3>Chispas de Colores</h3>
+
+<p>6 unidades</p>
+
+<span>$550.00</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="content" id="chocolate">
+
+<div class="cards">
+
+<div class="card">
+
+<img src="img/chocolate.jpg" alt="Chocolate">
+
+<h3>Chocolate</h3>
+
+<p>5 unidades</p>
+
+<span>$250.00</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="content" id="fresa">
+
+<div class="cards">
+
+<div class="card">
+
+<img src="img/fresa.jpg" alt="Fresa">
+
+<h3>Fresa</h3>
+
+<p>6 unidades</p>
+
+<span>$550.00</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="content" id="vainilla">
+
+<div class="cards">
+
+<div class="card">
+
+<img src="img/vainilla.jpg" alt="Vainilla">
+
+<h3>Vainilla</h3>
+
+<p>6 unidades</p>
+
+<span>$500.00</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="content" id="mixto">
+
+<div class="cards">
+
+<div class="card">
+
+<img src="img/mixto.jpg" alt="Mixto">
+
+<h3>Caja Mixta</h3>
+
+<p>12 unidades</p>
+
+<span>$1000.00</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="content" id="otros">
+
+<div class="cards">
+
+<div class="card">
+
+<img src="img/especial.jpg" alt="Especial">
+
+<h3>Ediciones Especiales</h3>
+
+<p>Consulta disponibilidad.</p>
+
+<span>Desde $600</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="contacto" id="contacto">
+
+<h2>Haz tu pedido</h2>
+
+<p>
+Estamos listos para preparar tus minidonas favoritas.
+</p>
+
+<a
+class="btn whatsapp"
+href="https://wa.me/5355123300"
+target="_blank">
+
+Pedir por WhatsApp
+
+</a>
+
+<p class="direccion">
+
+📍 Reparto Rajayoga · Santiago de Cuba
+
+</p>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>
+
+© 2026 DDonas · Todos los derechos reservados.
+
+</p>
+
+</footer>
+
+<script src="js/script.js"></script>
+
 </body>
+
 </html>
