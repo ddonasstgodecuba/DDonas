@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DDonas | Pedido Inteligente</title>
+
+<style>
+:root{
+  --accent:#ff3f86;
+  --accent2:#6c5ce7;
+  --bg:linear-gradient(180deg,#fff,#ffe6f1,#e9ddff);
+  --card:rgba(255,255,255,.75);
+  --shadow:0 20px 50px rgba(0,0,0,.10);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+}
+
+body{
+  background:var(--bg);
+  color:#1c1c1e;
+  padding:30px 15px;
+}
+
+h1{
+  text-align:center;
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  color:var(--accent);
+  font-size:54px;
+}
+
+/* LAYOUT */
+.container{
+  max-width:900px;
+  margin:20px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:15px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(20px);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+.img{
+  height:120px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#ffe0ec,#e6ddff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+}
+
+.title{
+  margin-top:10px;
+  font-weight:600;
+}
+
+/* CONTROLES */
+.controls{
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.qty{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+button{
+  border:none;
+  cursor:pointer;
+  border-radius:12px;
+  transition:.2s;
+}
+
+.btn-small{
+  width:28px;
+  height:28px;
+  background:#eee;
+  font-size:16px;
+}
+
+.btn-small:hover{
+  background:#ddd;
+}
+
+.count{
+  min-width:20px;
+  text-align:center;
+}
+
+/* WHATSAPP CTA */
+.cta{
+  max-width:600px;
+  margin:30px auto;
+  text-align:center;
+}
+
+.bigbtn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  padding:14px 18px;
+  border-radius:16px;
+  background:#25d366;
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:var(--shadow);
+}
+
+.summary{
+  margin-top:10px;
+  font-size:14px;
+  color:#444;
+}
+</style>
+</head>
+
+<body>
+
+<h1>DDonas</h1>
+
+<div class="container">
+
+  <div class="card">
+    <div class="img">🍫</div>
+    <div class="title">Choco Velvet</div>
+
+    <div class="controls">
+      <div class="qty">
+        <button class="btn-small" onclick="changeQty('choco',-1)">-</button>
+        <div id="chocoQty">0</div>
+        <button class="btn-small" onclick="changeQty('choco',1)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="img">🍦</div>
+    <div class="title">Vainilla Cloud</div>
+
+    <div class="controls">
+      <div class="qty">
+        <button class="btn-small" onclick="changeQty('vainilla',-1)">-</button>
+        <div id="vainillaQty">0</div>
+        <button class="btn-small" onclick="changeQty('vainilla',1)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="img">🍓</div>
+    <div class="title">Glaseado Pink</div>
+
+    <div class="controls">
+      <div class="qty">
+        <button class="btn-small" onclick="changeQty('glaseado',-1)">-</button>
+        <div id="glaseadoQty">0</div>
+        <button class="btn-small" onclick="changeQty('glaseado',1)">+</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta">
+
+  <a id="waBtn" class="bigbtn" target="_blank">Pedir por WhatsApp</a>
+
+  <div class="summary" id="summary">
+    Selecciona tus minidonas 🍩
+  </div>
+
+</div>
+
+<script>
+
+const phone = "55123300";
+
+let cart = {
+  choco:0,
+  vainilla:0,
+  glaseado:0
+};
+
+const names = {
+  choco:"Choco Velvet",
+  vainilla:"Vainilla Cloud",
+  glaseado:"Glaseado Pink"
+};
+
+function changeQty(item, val){
+
+  cart[item] += val;
+
+  if(cart[item] < 0) cart[item] = 0;
+
+  document.getElementById(item+"Qty").innerText = cart[item];
+
+  updateWhatsApp();
+
+}
+
+function updateWhatsApp(){
+
+  let message = "Hola, quiero pedir:\n\n";
+  let total = 0;
+
+  for(let key in cart){
+    if(cart[key] > 0){
+      message += `• ${names[key]} x${cart[key]}\n`;
+      total += cart[key];
+    }
+  }
+
+  if(total === 0){
+    document.getElementById("summary").innerText = "Selecciona tus minidonas 🍩";
+    document.getElementById("waBtn").href = "#";
+    return;
+  }
+
+  message += "\nGracias 💖";
+
+  document.getElementById("summary").innerText = `Total de unidades: ${total}`;
+
+  document.getElementById("waBtn").href =
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+}
+
+updateWhatsApp();
+
+</script>
+
+</body>
+</html>
