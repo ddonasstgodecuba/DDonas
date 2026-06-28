@@ -12,98 +12,108 @@ const waMain = document.getElementById("waMain");
 const toggle = document.getElementById("darkToggle");
 
 /* =========================
-   MODO OSCURO (PERSISTENTE)
+   ESTADO INICIAL (ANIMACIÓN)
 ========================= */
 
-// cargar estado guardado
-if (toggle && localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-    toggle.checked = true;
-}
+window.addEventListener("load", () => {
 
-// cambiar modo
+    document.body.style.opacity = "1";
+    document.body.style.transition = "background .6s ease, color .6s ease, opacity .6s ease";
+
+});
+
+/* =========================
+   MODO OSCURO (ROBUSTO + PERSISTENTE)
+========================= */
+
 if (toggle) {
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+        toggle.checked = true;
+    }
+
     toggle.addEventListener("change", () => {
 
         document.body.classList.toggle("dark");
 
-        if (toggle.checked) {
-            localStorage.setItem("theme", "dark");
-        } else {
-            localStorage.setItem("theme", "light");
-        }
+        localStorage.setItem(
+            "theme",
+            toggle.checked ? "dark" : "light"
+        );
 
     });
+
 }
 
 /* =========================
-   TABS SYSTEM
+   TABS SYSTEM (PROTEGIDO)
 ========================= */
 
-tabs.forEach(tab => {
+if (tabs.length && contents.length) {
 
-    tab.addEventListener("click", () => {
+    tabs.forEach(tab => {
 
-        tabs.forEach(t => t.classList.remove("active"));
+        tab.addEventListener("click", () => {
 
-        tab.classList.add("active");
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
 
-        const target = tab.getAttribute("data-tab");
+            const target = tab.getAttribute("data-tab");
 
-        contents.forEach(content => {
-            content.classList.remove("active");
+            contents.forEach(content => {
+                content.classList.remove("active");
+            });
+
+            const targetEl = document.getElementById(target);
+            if (targetEl) targetEl.classList.add("active");
+
         });
-
-        document.getElementById(target).classList.add("active");
 
     });
 
-});
+}
 
 /* =========================
    SCROLL SUAVE NAVBAR
 ========================= */
 
-links.forEach(link => {
+if (links.length) {
 
-    link.addEventListener("click", (e) => {
+    links.forEach(link => {
 
-        e.preventDefault();
+        link.addEventListener("click", (e) => {
 
-        const targetId = link.getAttribute("href").replace("#", "");
+            e.preventDefault();
 
-        const targetElement = document.getElementById(targetId);
+            const targetId = link.getAttribute("href").replace("#", "");
+            const targetElement = document.getElementById(targetId);
 
-        if (targetElement) {
+            if (targetElement) {
 
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: "smooth"
-            });
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: "smooth"
+                });
 
-        }
+            }
+
+        });
 
     });
 
-});
+}
 
 /* =========================
    WHATSAPP FLOAT MENU
 ========================= */
 
 if (waMain && waContainer) {
+
     waMain.addEventListener("click", () => {
         waContainer.classList.toggle("active");
     });
+
 }
-
-/* =========================
-   ANIMACIÓN AL CARGAR
-========================= */
-
-window.addEventListener("load", () => {
-
-    document.body.style.opacity = "1";
-    document.body.style.transition = "background .5s ease, color .5s ease";
-
-});
